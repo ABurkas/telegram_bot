@@ -48,6 +48,7 @@ if __name__ == "__main__":
         print("Ошибка: переменная окружения BOT_TOKEN не установлена!")
         exit(1)
 
+    print("STARTING BOT...")
     app = Application.builder().token(BOT_TOKEN).build()
 
     # Обработка настоящих новых участников
