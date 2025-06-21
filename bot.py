@@ -1,6 +1,15 @@
 print("STARTING BOT...")
 
 import os
+import sys
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+print(f"BOT_TOKEN = {BOT_TOKEN}", file=sys.stderr)
+
+if not BOT_TOKEN:
+    print("Ошибка: переменная окружения BOT_TOKEN не установлена!", file=sys.stderr)
+    exit(1)
+    
 from telegram import Update, User, ChatMember, ChatMemberUpdated
 from telegram.ext import (
     Application,
