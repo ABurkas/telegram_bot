@@ -25,6 +25,7 @@ async def welcome_user(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Команда /testnew — эмуляция нового участника
 async def test_new_user(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print("Получена команда /testnew")
     fake_user = User(id=123456789, is_bot=False, first_name="Тест", username="testuser")
     fake_chat = update.effective_chat
 
@@ -50,3 +51,4 @@ if __name__ == "__main__":
 
     print("Бот запущен.")
     app.run_polling()
+
