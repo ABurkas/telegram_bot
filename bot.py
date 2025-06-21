@@ -1,3 +1,4 @@
+import os
 from telegram import Update, User, ChatMember, ChatMemberUpdated
 from telegram.ext import (
     Application,
@@ -6,7 +7,7 @@ from telegram.ext import (
     CommandHandler,
 )
 
-BOT_TOKEN = "7516479313:AAGFunEzIlXOf5uJTVFcE31ongvacEJ0dJM"
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # Читаем токен из переменной окружения
 REKLAMA_CONTACT = "@aburkas"
 
 # Обработка нового участника
@@ -41,6 +42,10 @@ async def test_new_user(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await welcome_user(fake_update, context)
 
 if __name__ == "__main__":
+    if not BOT_TOKEN:
+        print("Ошибка: переменная окружения BOT_TOKEN не установлена!")
+        exit(1)
+
     app = Application.builder().token(BOT_TOKEN).build()
 
     # Обработка настоящих новых участников
@@ -51,4 +56,3 @@ if __name__ == "__main__":
 
     print("Бот запущен.")
     app.run_polling()
-
