@@ -1,3 +1,5 @@
+print("STARTING BOT...")
+
 import os
 from telegram import Update, User, ChatMember, ChatMemberUpdated
 from telegram.ext import (
