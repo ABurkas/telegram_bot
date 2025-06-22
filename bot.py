@@ -3,6 +3,9 @@ print("STARTING BOT...")
 import os
 import sys
 
+print("Все переменные окружения:")
+print(os.environ)
+
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 print(f"BOT_TOKEN = {BOT_TOKEN}", file=sys.stderr)
 
