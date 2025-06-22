@@ -47,12 +47,18 @@ async def test_new_user(update: Update, context: ContextTypes.DEFAULT_TYPE):
     fake_update = Update(update.update_id, chat_member=chat_member)
     await welcome_user(fake_update, context)
 
+# Команда /start для проверки, что бот жив
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Бот жив и работает!")
+
 if __name__ == "__main__":
     print("STARTING BOT...")
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(ChatMemberHandler(welcome_user, ChatMemberHandler.CHAT_MEMBER))
     app.add_handler(CommandHandler("testnew", test_new_user))
+    app.add_handler(CommandHandler("start", start))
 
     print("Бот запущен.")
     app.run_polling()
+
